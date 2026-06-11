@@ -262,7 +262,14 @@
     .stat-label { font-size: 13px; color: var(--gray-600); margin-top: 3px; }
 
     /* ── ABOUT ── */
-    #about { padding: 88px 0; background: var(--white); }
+    #about { padding: 88px 0; background: var(--white); position: relative; }
+    #about::after {
+      content: '';
+      position: absolute; bottom: -1px; left: 0; right: 0;
+      height: 48px;
+      background: var(--gray-50);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
     .about-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
     }
@@ -304,44 +311,129 @@
       display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;
     }
     .service-card {
-      background: var(--white); border-radius: 12px;
-      padding: 28px 24px; border: 1px solid var(--gray-200);
+      background: var(--white); border-radius: 14px;
+      padding: 28px 24px 24px; border: 1px solid var(--gray-200);
       transition: all var(--transition); position: relative; overflow: hidden;
+      cursor: default;
     }
+    .service-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; top: 0;
+      border-radius: 14px; opacity: 0;
+      transition: opacity var(--transition);
+      pointer-events: none;
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: transparent; }
+    .service-card:hover::after { opacity: 1; }
+
+    /* Platform icon container */
+    .svc-icon-wrap {
+      width: 52px; height: 52px; border-radius: 13px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; flex-shrink: 0;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .service-card:hover .svc-icon-wrap { transform: scale(1.08); }
+    .svc-icon-wrap svg { width: 28px; height: 28px; display: block; }
+
+    /* Per-platform brand colors */
+    .svc-facebook .svc-icon-wrap { background: linear-gradient(135deg,#1877f2,#0c56d0); box-shadow: 0 4px 14px rgba(24,119,242,.30); }
+    .svc-google   .svc-icon-wrap { background: #fff; border: 1.5px solid #e8eaed; box-shadow: 0 4px 14px rgba(66,133,244,.18); }
+    .svc-tiktok   .svc-icon-wrap { background: #010101; box-shadow: 0 4px 14px rgba(1,1,1,.25); }
+    .svc-shopee   .svc-icon-wrap { background: linear-gradient(135deg,#f05d24,#ee4d2d); box-shadow: 0 4px 14px rgba(238,77,45,.28); }
+    .svc-capi     .svc-icon-wrap { background: linear-gradient(135deg,#0d2d6e,#1a56db); box-shadow: 0 4px 14px rgba(26,86,219,.30); }
+    .svc-whatsapp .svc-icon-wrap { background: linear-gradient(135deg,#25d366,#128c7e); box-shadow: 0 4px 14px rgba(37,211,102,.28); }
+    .svc-ai       .svc-icon-wrap { background: linear-gradient(135deg,#7c3aed,#a855f7); box-shadow: 0 4px 14px rgba(124,58,237,.28); }
+    .svc-crm      .svc-icon-wrap { background: linear-gradient(135deg,#0ea5e9,#0284c7); box-shadow: 0 4px 14px rgba(14,165,233,.28); }
+
+    /* Top accent bar per platform */
     .service-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--blue-700), var(--accent));
-      transform: scaleX(0); transform-origin: left;
-      transition: transform var(--transition);
+      height: 3px; transform: scaleX(0); transform-origin: left;
+      transition: transform var(--transition); border-radius: 14px 14px 0 0;
     }
-    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; }
     .service-card:hover::before { transform: scaleX(1); }
-    .service-emoji { font-size: 30px; margin-bottom: 14px; display: block; }
-    .service-name { font-size: 16px; font-weight: 800; color: var(--gray-900); margin-bottom: 8px; }
+    .svc-facebook::before { background: #1877f2; }
+    .svc-google::before   { background: linear-gradient(90deg,#4285f4,#ea4335,#fbbc05,#34a853); }
+    .svc-tiktok::before   { background: linear-gradient(90deg,#69c9d0,#010101,#fe2c55); }
+    .svc-shopee::before   { background: #ee4d2d; }
+    .svc-capi::before     { background: linear-gradient(90deg,#1a56db,#0ea5e9); }
+    .svc-whatsapp::before { background: #25d366; }
+    .svc-ai::before       { background: linear-gradient(90deg,#7c3aed,#ec4899); }
+    .svc-crm::before      { background: linear-gradient(90deg,#0ea5e9,#6366f1); }
+
+    .service-name { font-size: 15px; font-weight: 800; color: var(--gray-900); margin-bottom: 8px; }
     .service-desc { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
 
     /* ── INDUSTRIES ── */
-    #industries { padding: 88px 0; background: var(--white); }
+    #industries { padding: 88px 0; background: var(--white); position: relative; }
+    #industries::before {
+      content: '';
+      position: absolute; top: -1px; left: 0; right: 0;
+      height: 40px;
+      background: var(--gray-50);
+      clip-path: ellipse(55% 100% at 50% 0%);
+    }
+    #industries::after {
+      content: '';
+      position: absolute; bottom: -1px; left: 0; right: 0;
+      height: 48px;
+      background: var(--blue-900);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
     .industries-grid {
-      display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
     }
+    @media (max-width: 960px) { .industries-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 600px) { .industries-grid { grid-template-columns: repeat(2, 1fr); } }
+
     .industry-item {
-      display: flex; align-items: center; gap: 10px;
-      background: var(--white); border: 1.5px solid var(--gray-200);
-      border-radius: 10px; padding: 13px 20px;
-      font-size: 14px; font-weight: 600; color: var(--gray-700);
-      transition: all var(--transition); cursor: default;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 10px;
+      border-radius: 14px; padding: 22px 14px;
+      font-size: 13px; font-weight: 700;
+      text-align: center; cursor: default;
+      transition: all var(--transition);
+      border: 1.5px solid transparent;
+      position: relative; overflow: hidden;
     }
-    .industry-item:hover {
-      border-color: var(--blue-400); color: var(--blue-700);
-      background: var(--blue-50); transform: translateY(-2px);
-      box-shadow: var(--shadow-sm);
-    }
-    .ind-icon { font-size: 20px; }
+    .industry-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .ind-icon { font-size: 28px; line-height: 1; }
+    .ind-label { line-height: 1.3; }
+
+    /* Unique bg per industry */
+    .industry-item:nth-child(1)  { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+    .industry-item:nth-child(2)  { background: #f0fdf4; color: #15803d; border-color: #bbf7d0; }
+    .industry-item:nth-child(3)  { background: #fef3c7; color: #b45309; border-color: #fde68a; }
+    .industry-item:nth-child(4)  { background: #fdf4ff; color: #9333ea; border-color: #e9d5ff; }
+    .industry-item:nth-child(5)  { background: #fff7ed; color: #c2410c; border-color: #fed7aa; }
+    .industry-item:nth-child(6)  { background: #f0f9ff; color: #0369a1; border-color: #bae6fd; }
+    .industry-item:nth-child(7)  { background: #fdf2f8; color: #be185d; border-color: #fbcfe8; }
+    .industry-item:nth-child(8)  { background: #fff1f2; color: #be123c; border-color: #fecdd3; }
+    .industry-item:nth-child(9)  { background: #ecfdf5; color: #065f46; border-color: #a7f3d0; }
+    .industry-item:nth-child(10) { background: #f8fafc; color: #475569; border-color: #cbd5e1; }
+
+    .industry-item:nth-child(1):hover  { background: #dbeafe; box-shadow: 0 8px 28px rgba(29,78,216,.18); }
+    .industry-item:nth-child(2):hover  { background: #dcfce7; box-shadow: 0 8px 28px rgba(21,128,61,.18); }
+    .industry-item:nth-child(3):hover  { background: #fef9c3; box-shadow: 0 8px 28px rgba(180,83,9,.18); }
+    .industry-item:nth-child(4):hover  { background: #f3e8ff; box-shadow: 0 8px 28px rgba(147,51,234,.18); }
+    .industry-item:nth-child(5):hover  { background: #ffedd5; box-shadow: 0 8px 28px rgba(194,65,12,.18); }
+    .industry-item:nth-child(6):hover  { background: #e0f2fe; box-shadow: 0 8px 28px rgba(3,105,161,.18); }
+    .industry-item:nth-child(7):hover  { background: #fce7f3; box-shadow: 0 8px 28px rgba(190,24,93,.18); }
+    .industry-item:nth-child(8):hover  { background: #ffe4e6; box-shadow: 0 8px 28px rgba(190,18,60,.18); }
+    .industry-item:nth-child(9):hover  { background: #d1fae5; box-shadow: 0 8px 28px rgba(6,95,70,.18); }
+    .industry-item:nth-child(10):hover { background: #f1f5f9; box-shadow: 0 8px 28px rgba(71,85,105,.15); }
 
     /* ── WHY ── */
-    #why { padding: 88px 0; background: var(--blue-900); }
+    #why { padding: 96px 0 112px; background: var(--blue-900); position: relative; }
+    #why::after {
+      content: '';
+      position: absolute; bottom: -1px; left: 0; right: 0;
+      height: 48px;
+      background: var(--gray-50);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
     #why .section-label { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.2); color: #93c5fd; }
     #why .section-title { color: #fff; }
     #why .section-sub { color: #93c5fd; }
@@ -639,7 +731,7 @@
       transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.28);
       max-width: 240px;
     }
-    .float-btn-icon { font-size: 22px; flex-shrink: 0; }
+    .float-btn-icon { display:flex; align-items:center; justify-content:center; width:26px; height:26px; flex-shrink: 0; }
     .float-btn-label { overflow: hidden; white-space: nowrap; }
     .float-zalo { background: linear-gradient(135deg, #0068ff, #0050c8); }
     .float-messenger { background: linear-gradient(135deg, #0099ff, #a033ff); }
@@ -799,43 +891,92 @@
       <p class="section-sub">Từ quảng cáo hiệu suất đến tự động hóa dữ liệu — mọi thứ bạn cần để tăng trưởng.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card fade-in">
-        <span class="service-emoji">📘</span>
+      <!-- Facebook Ads -->
+      <div class="service-card svc-facebook fade-in">
+        <div class="svc-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.79-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" fill="#fff"/>
+          </svg>
+        </div>
         <div class="service-name">Facebook Ads</div>
         <div class="service-desc">Quản lý chiến dịch Facebook Ads tối ưu hiệu suất, nhắm đúng mục tiêu và kiểm soát chi phí hiệu quả.</div>
       </div>
-      <div class="service-card fade-in">
-        <span class="service-emoji">🔍</span>
+      <!-- Google Ads -->
+      <div class="service-card svc-google fade-in">
+        <div class="svc-icon-wrap">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+        </div>
         <div class="service-name">Google Ads</div>
         <div class="service-desc">Search, Display, YouTube, Shopping — phủ sóng toàn bộ hành trình mua hàng trên Google.</div>
       </div>
-      <div class="service-card fade-in">
-        <span class="service-emoji">🎵</span>
+      <!-- TikTok Ads -->
+      <div class="service-card svc-tiktok fade-in">
+        <div class="svc-icon-wrap">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z" fill="#fff"/>
+          </svg>
+        </div>
         <div class="service-name">TikTok Ads</div>
         <div class="service-desc">Tiếp cận thế hệ người dùng trẻ qua TikTok với nội dung sáng tạo và chiến lược quảng cáo native.</div>
       </div>
-      <div class="service-card fade-in">
-        <span class="service-emoji">🛍️</span>
+      <!-- Shopee Ads -->
+      <div class="service-card svc-shopee fade-in">
+        <div class="svc-icon-wrap">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 1a5 5 0 00-5 5H5l-1 14h16l-1-14h-2a5 5 0 00-5-5zm0 2a3 3 0 013 3H9a3 3 0 013-3zm0 8a2 2 0 100 4 2 2 0 000-4z" fill="#fff"/>
+          </svg>
+        </div>
         <div class="service-name">Shopee Ads</div>
         <div class="service-desc">Tối ưu quảng cáo nội sàn Shopee, tăng visibility và chuyển đổi trực tiếp trên nền tảng thương mại điện tử.</div>
       </div>
-      <div class="service-card fade-in">
-        <span class="service-emoji">⚡</span>
+      <!-- Conversion API -->
+      <div class="service-card svc-capi fade-in">
+        <div class="svc-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <div class="service-name">Conversion API Integration</div>
         <div class="service-desc">Tích hợp CAPI gửi dữ liệu chuyển đổi server-side, khắc phục mất dữ liệu do iOS và trình chặn cookie.</div>
       </div>
-      <div class="service-card fade-in">
-        <span class="service-emoji">💬</span>
+      <!-- WhatsApp -->
+      <div class="service-card svc-whatsapp fade-in">
+        <div class="svc-icon-wrap">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="#fff"/>
+          </svg>
+        </div>
         <div class="service-name">WhatsApp Business API</div>
         <div class="service-desc">Triển khai WhatsApp Business API để tự động hóa CSKH, gửi thông báo và tương tác khách hàng quy mô lớn.</div>
       </div>
-      <div class="service-card fade-in">
-        <span class="service-emoji">🤖</span>
+      <!-- AI Automation -->
+      <div class="service-card svc-ai fade-in">
+        <div class="svc-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="11" width="18" height="11" rx="2" stroke="#fff" stroke-width="2"/>
+            <path d="M7 11V7a5 5 0 0110 0v4" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="16" r="1.5" fill="#fff"/>
+            <path d="M9 8h.01M15 8h.01" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div class="service-name">AI Automation</div>
         <div class="service-desc">Tự động hóa quy trình marketing, phân tích nội dung và tối ưu chiến dịch bằng công nghệ AI hiện đại.</div>
       </div>
-      <div class="service-card fade-in">
-        <span class="service-emoji">🔗</span>
+      <!-- CRM Integration -->
+      <div class="service-card svc-crm fade-in">
+        <div class="svc-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="5" r="3" stroke="#fff" stroke-width="2"/>
+            <circle cx="5" cy="19" r="3" stroke="#fff" stroke-width="2"/>
+            <circle cx="19" cy="19" r="3" stroke="#fff" stroke-width="2"/>
+            <path d="M12 8v3m0 0l-5.5 5M12 11l5.5 5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div class="service-name">CRM Integration</div>
         <div class="service-desc">Kết nối hệ thống CRM với các nền tảng quảng cáo và marketing, đồng bộ dữ liệu khách hàng tự động.</div>
       </div>
@@ -851,16 +992,16 @@
       <p class="section-sub">Kinh nghiệm thực chiến đa dạng ngành nghề giúp chúng tôi hiểu đặc thù và tối ưu hiệu quả cho từng lĩnh vực.</p>
     </div>
     <div class="industries-grid fade-in">
-      <div class="industry-item"><span class="ind-icon">🏢</span> Doanh nghiệp SME</div>
-      <div class="industry-item"><span class="ind-icon">🦷</span> Nha Khoa</div>
-      <div class="industry-item"><span class="ind-icon">🩺</span> Thiết Bị Y Tế</div>
-      <div class="industry-item"><span class="ind-icon">💍</span> Trang Sức</div>
-      <div class="industry-item"><span class="ind-icon">🛋️</span> Nội Thất</div>
-      <div class="industry-item"><span class="ind-icon">🏠</span> Gia Dụng</div>
-      <div class="industry-item"><span class="ind-icon">💆</span> Spa & Làm Đẹp</div>
-      <div class="industry-item"><span class="ind-icon">👶</span> Mẹ và Bé</div>
-      <div class="industry-item"><span class="ind-icon">🛒</span> Ecommerce</div>
-      <div class="industry-item"><span class="ind-icon">📍</span> Local Business</div>
+      <div class="industry-item"><span class="ind-icon">🏢</span><span class="ind-label">Doanh nghiệp SME</span></div>
+      <div class="industry-item"><span class="ind-icon">🦷</span><span class="ind-label">Nha Khoa</span></div>
+      <div class="industry-item"><span class="ind-icon">🩺</span><span class="ind-label">Thiết Bị Y Tế</span></div>
+      <div class="industry-item"><span class="ind-icon">💍</span><span class="ind-label">Trang Sức</span></div>
+      <div class="industry-item"><span class="ind-icon">🛋️</span><span class="ind-label">Nội Thất</span></div>
+      <div class="industry-item"><span class="ind-icon">🏠</span><span class="ind-label">Gia Dụng</span></div>
+      <div class="industry-item"><span class="ind-icon">💆</span><span class="ind-label">Spa &amp; Làm Đẹp</span></div>
+      <div class="industry-item"><span class="ind-icon">👶</span><span class="ind-label">Mẹ và Bé</span></div>
+      <div class="industry-item"><span class="ind-icon">🛒</span><span class="ind-label">Ecommerce</span></div>
+      <div class="industry-item"><span class="ind-icon">📍</span><span class="ind-label">Local Business</span></div>
     </div>
   </div>
 </section>
@@ -1229,20 +1370,34 @@
 <div class="float-chat" id="floatChat">
   <div class="float-actions" id="floatActions">
     <a href="https://zalo.me/0986219360" target="_blank" rel="noopener" class="float-btn float-zalo" title="Chat Zalo">
-      <span class="float-btn-icon">💬</span>
+      <span class="float-btn-icon">
+        <svg width="24" height="24" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <text x="3" y="36" font-family="Arial" font-weight="900" font-size="24" fill="white" letter-spacing="-1">Zalo</text>
+        </svg>
+      </span>
       <span class="float-btn-label">Chat Zalo ngay</span>
     </a>
     <a href="https://m.me/HaNamAgency" target="_blank" rel="noopener" class="float-btn float-messenger" title="Messenger">
-      <span class="float-btn-icon">📘</span>
+      <span class="float-btn-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.477 2 2 6.145 2 11.259c0 2.82 1.324 5.342 3.407 7.076V23l3.956-2.173A10.84 10.84 0 0012 21.52c5.523 0 10-4.146 10-9.261C22 6.145 17.523 2 12 2zm1.093 12.482l-2.54-2.71-4.958 2.71 5.452-5.79 2.603 2.71 4.893-2.71-5.45 5.79z" fill="white"/>
+        </svg>
+      </span>
       <span class="float-btn-label">Nhắn Messenger</span>
     </a>
     <a href="tel:0986219360" class="float-btn float-phone" title="Gọi điện">
-      <span class="float-btn-icon">📞</span>
+      <span class="float-btn-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.4 11.4 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z" fill="white"/>
+        </svg>
+      </span>
       <span class="float-btn-label">Gọi: 0986 219 360</span>
     </a>
   </div>
   <button class="float-toggle" id="floatToggle" title="Liên hệ ngay" aria-label="Mở menu liên hệ">
-    💬
+    <svg id="floatIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 2H4a2 2 0 00-2 2v18l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2z" fill="white"/>
+    </svg>
   </button>
 </div>
 
@@ -1290,23 +1445,23 @@
   const floatToggle = document.getElementById('floatToggle');
   const floatActions = document.getElementById('floatActions');
   let floatOpen = false;
+  const iconOpen  = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 6L6 18M6 6l12 12" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>`;
+  const iconClose = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4a2 2 0 00-2 2v18l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2z" fill="white"/></svg>`;
   floatToggle.addEventListener('click', () => {
     floatOpen = !floatOpen;
     floatActions.classList.toggle('open', floatOpen);
-    floatToggle.textContent = floatOpen ? '✕' : '💬';
+    floatToggle.innerHTML = floatOpen ? iconOpen : iconClose;
   });
-  // Auto-open after 4s on first visit
   setTimeout(() => {
     if (!floatOpen) {
       floatOpen = true;
       floatActions.classList.add('open');
-      floatToggle.textContent = '✕';
-      // Auto-close after 6s if user doesn't interact
+      floatToggle.innerHTML = iconOpen;
       setTimeout(() => {
         if (floatOpen && !floatActions.matches(':hover')) {
           floatOpen = false;
           floatActions.classList.remove('open');
-          floatToggle.textContent = '💬';
+          floatToggle.innerHTML = iconClose;
         }
       }, 6000);
     }
