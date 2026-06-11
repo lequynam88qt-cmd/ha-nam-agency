@@ -397,17 +397,6 @@
     .contact-btn.facebook { background: #1877f2; color: #fff; }
     .contact-btn.facebook:hover { background: #145dbf; transform: translateY(-1px); }
 
-    .contact-map {
-      background: linear-gradient(135deg, var(--blue-900), var(--blue-700));
-      border-radius: 14px; padding: 40px 32px; color: #fff;
-    }
-    .map-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; }
-    .map-addr { font-size: .95rem; opacity: .8; line-height: 1.65; margin-bottom: 24px; }
-    .map-note {
-      font-size: 12px; opacity: .65;
-      background: rgba(255,255,255,.1); border-radius: 8px; padding: 12px 16px;
-    }
-
     /* ── POLICY SECTIONS ── */
     .policy-section { padding: 72px 0; }
     .policy-section:nth-child(even) { background: var(--gray-50); }
@@ -495,26 +484,6 @@
     }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-      .hero-visual { flex-direction: row; flex-wrap: wrap; }
-      .stat-card { flex: 1 1 200px; }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-      .footer-inner { grid-template-columns: 1fr 1fr; }
-      .policy-box { padding: 28px 20px; }
-    }
-    @media (max-width: 600px) {
-      .hero-actions { flex-direction: column; }
-      .btn-primary, .btn-secondary { justify-content: center; }
-      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .hero-visual { flex-direction: column; }
-    }
-
     /* ── CONTACT FORM ── */
     .contact-form-wrap {
       background: var(--white); border-radius: 14px;
@@ -560,47 +529,77 @@
       box-shadow: 0 4px 14px rgba(26,86,219,.3);
     }
     .form-submit:hover { background: var(--blue-900); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,86,219,.4); }
-    .form-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
-    .form-note {
-      font-size: 11.5px; color: var(--gray-400); text-align: center; margin-top: 10px;
-    }
-    .form-success {
-      display: none; text-align: center; padding: 28px 20px;
-    }
-    .form-success-icon { font-size: 40px; margin-bottom: 12px; }
-    .form-success h3 { font-size: 1.1rem; font-weight: 800; color: var(--gray-900); margin-bottom: 8px; }
-    .form-success p { font-size: 14px; color: var(--gray-600); }
-    @media (max-width: 600px) {
-      .form-row { grid-template-columns: 1fr; }
-    }
 
-    /* ── POLICY TABS ── */
+    /* ── POLICY TABS (ĐÃ TỐI ƯU HIỂN THỊ 1 HÀNG) ── */
     .ptab-header { margin-bottom: 28px; }
     .ptab-header .section-title { font-size: 1.8rem; }
+    
     .ptab-nav {
-      display: flex; flex-wrap: wrap; gap: 0;
+      display: flex;
+      flex-wrap: nowrap; /* Bắt buộc các tab nằm trên 1 dòng */
+      overflow-x: auto; /* Cho phép vuốt ngang nếu màn hình nhỏ */
+      gap: 0;
       border-bottom: 2px solid var(--gray-200);
-      margin-bottom: 32px; margin-top: 24px;
+      margin-bottom: 32px;
+      margin-top: 24px;
+      
+      /* Ẩn thanh cuộn nhưng vẫn giữ khả năng vuốt */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE và Edge */
+      -webkit-overflow-scrolling: touch; /* Trải nghiệm vuốt mượt trên iOS */
     }
+    
+    .ptab-nav::-webkit-scrollbar {
+      display: none; /* Ẩn thanh cuộn trên Chrome/Safari/Edge */
+    }
+
     .ptab-btn {
       background: none; border: none; cursor: pointer;
       padding: 11px 20px; font-size: 14px; font-weight: 600;
       color: var(--gray-600); border-bottom: 2px solid transparent;
       margin-bottom: -2px; transition: all var(--transition);
       white-space: nowrap; font-family: inherit;
+      flex-shrink: 0; /* Chống bị bóp méo nút khi màn hình nhỏ */
     }
     .ptab-btn:hover { color: var(--blue-700); background: var(--blue-50); }
     .ptab-btn.active { color: var(--blue-700); border-bottom-color: var(--blue-700); background: none; }
+    
     .ptab-panel { display: none; }
     .ptab-panel.active { display: block; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { flex-direction: row; flex-wrap: wrap; }
+      .stat-card { flex: 1 1 200px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .policy-box { padding: 28px 20px; }
+    }
     @media (max-width: 680px) {
-      .ptab-nav { gap: 6px; border-bottom: none; margin-bottom: 20px; }
+      .ptab-nav { 
+        gap: 6px; border-bottom: none; margin-bottom: 20px; 
+        padding-bottom: 6px; /* Cách ra một xíu cho dễ vuốt */
+      }
       .ptab-btn {
         border: 1.5px solid var(--gray-200); border-radius: 7px;
-        font-size: 12px; padding: 8px 12px; margin-bottom: 0;
+        font-size: 13px; padding: 8px 14px; margin-bottom: 0;
       }
       .ptab-btn.active { background: var(--blue-700); color: #fff; border-color: var(--blue-700); }
     }
+    @media (max-width: 600px) {
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-secondary { justify-content: center; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .hero-visual { flex-direction: column; }
+      .form-row { grid-template-columns: 1fr; }
+      .privacy-contact-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── PRIVACY CONTACT CARDS ── */
     .privacy-contact-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
@@ -620,9 +619,6 @@
     .pcc-label { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: .07em; }
     .pcc-val { font-size: 13px; font-weight: 700; color: var(--blue-700); margin: 4px 0 3px; word-break: break-all; }
     .pcc-note { font-size: 11.5px; color: var(--gray-500); }
-    @media (max-width: 600px) {
-      .privacy-contact-grid { grid-template-columns: 1fr; }
-    }
 
     /* ── FLOATING CHAT BUTTONS ── */
     .float-chat {
@@ -667,7 +663,6 @@
 </head>
 <body>
 
-<!-- ══════════ NAVIGATION ══════════ -->
 <nav id="nav">
   <div class="container">
     <div class="nav-inner">
@@ -700,7 +695,6 @@
   </div>
 </nav>
 
-<!-- ══════════ HERO ══════════ -->
 <section id="hero">
   <div class="hero-bg-shape"></div>
   <div class="container">
@@ -748,7 +742,6 @@
   </div>
 </section>
 
-<!-- ══════════ ABOUT ══════════ -->
 <section id="about">
   <div class="container">
     <div class="about-grid">
@@ -798,7 +791,6 @@
   </div>
 </section>
 
-<!-- ══════════ SERVICES ══════════ -->
 <section id="services">
   <div class="container">
     <div class="section-head center fade-in">
@@ -851,7 +843,6 @@
   </div>
 </section>
 
-<!-- ══════════ INDUSTRIES ══════════ -->
 <section id="industries">
   <div class="container">
     <div class="section-head center fade-in">
@@ -874,7 +865,6 @@
   </div>
 </section>
 
-<!-- ══════════ WHY CHOOSE US ══════════ -->
 <section id="why">
   <div class="container">
     <div class="section-head fade-in">
@@ -917,7 +907,6 @@
   </div>
 </section>
 
-<!-- ══════════ CONTACT ══════════ -->
 <section id="contact">
   <div class="container">
     <div class="contact-grid">
@@ -1017,22 +1006,18 @@
   </div>
 </section>
 
-<!-- ══════════ PHÁP LÝ & CHÍNH SÁCH (TABBED) ══════════ -->
 <section id="privacy" class="policy-section">
-  <!-- id="terms" and id="data-usage" handled via JS tab switching -->
   <div id="terms"></div>
   <div id="data-usage"></div>
   <div class="container">
     <div class="policy-box fade-in">
 
-      <!-- Header -->
       <div class="ptab-header">
         <span class="section-label">Pháp Lý &amp; Chính Sách</span>
         <h2 class="section-title" style="margin-top:10px;">Chính Sách &amp; Điều Khoản</h2>
         <p style="font-size:14px;color:var(--gray-600);margin-bottom:0;">HÀ NAM Agency cam kết tuân thủ đầy đủ các quy định về bảo mật dữ liệu và điều khoản sử dụng dịch vụ. Thông tin dưới đây được cung cấp để đáp ứng yêu cầu của Meta Developer Access Verification.</p>
       </div>
 
-      <!-- Tab Nav -->
       <div class="ptab-nav" role="tablist">
         <button class="ptab-btn active" data-tab="tab-privacy" role="tab">🔒 Chính Sách Bảo Mật</button>
         <button class="ptab-btn" data-tab="tab-terms" role="tab">📋 Điều Khoản Dịch Vụ</button>
@@ -1040,7 +1025,6 @@
         <button class="ptab-btn" data-tab="tab-contact" role="tab">✉️ Liên Hệ Quyền Riêng Tư</button>
       </div>
 
-      <!-- TAB 1: Privacy -->
       <div class="ptab-panel active" id="tab-privacy" role="tabpanel">
         <div class="policy-updated">Cập nhật lần cuối: Tháng 6, 2025</div>
         <p>HÀ NAM Agency ("Chúng tôi") cam kết bảo vệ quyền riêng tư và dữ liệu cá nhân của khách hàng, người dùng và đối tác. Chính sách bảo mật này mô tả cách chúng tôi thu thập, sử dụng, lưu trữ và bảo vệ thông tin của bạn.</p>
@@ -1073,7 +1057,6 @@
         <p>Website có thể sử dụng cookie và pixel tracking của các nền tảng quảng cáo để đo lường hiệu quả. Bạn có thể từ chối cookie qua cài đặt trình duyệt hoặc liên hệ chúng tôi để được hỗ trợ.</p>
       </div>
 
-      <!-- TAB 2: Terms -->
       <div class="ptab-panel" id="tab-terms" role="tabpanel">
         <div class="policy-updated">Cập nhật lần cuối: Tháng 6, 2025</div>
         <p>Bằng việc sử dụng dịch vụ của HÀ NAM Agency, bạn đồng ý với các điều khoản sau đây. Vui lòng đọc kỹ trước khi hợp tác.</p>
@@ -1103,7 +1086,6 @@
         <p>Mỗi bên có quyền chấm dứt hợp tác với thông báo trước tối thiểu 15 ngày làm việc, trừ trường hợp vi phạm nghiêm trọng điều khoản hợp đồng.</p>
       </div>
 
-      <!-- TAB 3: Data Usage -->
       <div class="ptab-panel" id="tab-data" role="tabpanel">
         <div class="policy-updated">Cập nhật lần cuối: Tháng 6, 2025 · Dành cho Meta Developer Access Verification</div>
         <p>HÀ NAM Agency sử dụng các API và công cụ của Meta Platform trong quá trình cung cấp dịch vụ marketing. Trang này mô tả chi tiết mục đích sử dụng, phạm vi dữ liệu và cam kết tuân thủ.</p>
@@ -1153,7 +1135,6 @@
         </ul>
       </div>
 
-      <!-- TAB 4: Contact for Privacy -->
       <div class="ptab-panel" id="tab-contact" role="tabpanel">
         <div class="policy-updated">Liên Hệ Yêu Cầu Về Quyền Riêng Tư &amp; Dữ Liệu</div>
         <p>Để thực hiện quyền truy cập, chỉnh sửa, xóa hoặc xuất dữ liệu cá nhân, vui lòng liên hệ với bộ phận xử lý dữ liệu của chúng tôi qua các kênh sau:</p>
@@ -1194,7 +1175,6 @@
   </div>
 </section>
 
-<!-- ══════════ FOOTER ══════════ -->
 <footer id="footer">
   <div class="container">
     <div class="footer-inner">
@@ -1246,15 +1226,12 @@
   </div>
 </footer>
 
-<!-- ══════════ FLOATING CHAT BUTTONS ══════════ -->
 <div class="float-chat" id="floatChat">
   <div class="float-actions" id="floatActions">
-    <!-- Zalo: thay YOUR_ZALO_PHONE bằng số Zalo (vd: 0986219360) -->
     <a href="https://zalo.me/0986219360" target="_blank" rel="noopener" class="float-btn float-zalo" title="Chat Zalo">
       <span class="float-btn-icon">💬</span>
       <span class="float-btn-label">Chat Zalo ngay</span>
     </a>
-    <!-- Messenger: thay HaNamAgency bằng username Facebook page của bạn -->
     <a href="https://m.me/HaNamAgency" target="_blank" rel="noopener" class="float-btn float-messenger" title="Messenger">
       <span class="float-btn-icon">📘</span>
       <span class="float-btn-label">Nhắn Messenger</span>
@@ -1335,30 +1312,53 @@
     }
   }, 4000);
 
-  // POLICY TABS
+  // POLICY TABS & URL TRACKING
   const tabBtns = document.querySelectorAll('.ptab-btn');
   const tabPanels = document.querySelectorAll('.ptab-panel');
+
   function switchTab(targetId) {
     tabBtns.forEach(b => b.classList.toggle('active', b.dataset.tab === targetId));
     tabPanels.forEach(p => p.classList.toggle('active', p.id === targetId));
   }
+
+  // Lắng nghe sự kiện click vào các Tab
   tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+    btn.addEventListener('click', () => {
+      const targetTab = btn.dataset.tab; // vd: 'tab-privacy'
+      const hashName = targetTab.replace('tab-', ''); // Cắt chữ 'tab-' để link đẹp hơn -> 'privacy'
+      
+      // Thay đổi URL trên thanh địa chỉ mà không làm giật trang web
+      history.pushState(null, null, '#' + hashName); 
+      
+      // Chuyển tab hiển thị
+      switchTab(targetTab);
+    });
   });
-  // Deep-link: #terms → terms tab, #data-usage → data tab
+
+  // Xử lý khi user truy cập bằng link có sẵn đuôi (vd: gửi link trực tiếp)
   function handlePolicyHash() {
-    const h = window.location.hash;
-    if (h === '#terms') switchTab('tab-terms');
-    else if (h === '#data-usage') switchTab('tab-data');
+    const h = window.location.hash; // Lấy phần # phía sau URL
+    if (h) {
+      const targetId = 'tab-' + h.substring(1); // Nối lại để tìm đúng ID tab
+      const targetBtn = document.querySelector(`.ptab-btn[data-tab="${targetId}"]`);
+      
+      if (targetBtn) {
+        switchTab(targetId);
+        // Tự động cuộn trang xuống khu vực Chính sách
+        const policySection = document.getElementById('privacy');
+        if (policySection) {
+          const offset = 72; // Chiều cao thanh menu
+          const top = policySection.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+    }
   }
+
   window.addEventListener('hashchange', handlePolicyHash);
-  handlePolicyHash();
+  handlePolicyHash(); // Chạy kiểm tra ngay khi load trang
 
   // FORMSPREE CONTACT FORM
-  // 1. Vào https://formspree.io → đăng ký miễn phí
-  // 2. Tạo New Form, đặt email nhận là lequynam88qt@gmail.com
-  // 3. Copy Form ID (vd: xrgvkpzb)
-  // 4. Thay YOUR_FORM_ID bên dưới bằng ID thật của bạn
   const FORMSPREE_ID = 'YOUR_FORM_ID'; // ← THAY TẠI ĐÂY
 
   async function submitContactForm() {
@@ -1375,7 +1375,6 @@
       return;
     }
 
-    // If Formspree not configured, fallback to mailto
     if (FORMSPREE_ID === 'YOUR_FORM_ID') {
       const subject = encodeURIComponent('Yêu cầu tư vấn từ website – ' + name);
       const body = encodeURIComponent(
