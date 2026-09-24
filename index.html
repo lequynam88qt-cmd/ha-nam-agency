@@ -380,12 +380,8 @@
     .float-zalo { background: #0068ff; }
     .float-phone { background: var(--green-600); }
 
-    /* ── ANIMATION ── */
-    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
-    .fade-in.visible { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .fade-in { opacity: 1; transform: none; transition: none; }
     }
 
     /* ── RESPONSIVE ── */
@@ -472,7 +468,7 @@
 <section id="hero">
   <div class="container">
     <div class="hero-grid">
-      <div class="fade-in">
+      <div>
         <div class="hero-badge"><span class="badge-dot"></span> Hộ kinh doanh đã đăng ký · Long Thành, Đồng Nai</div>
         <h1 class="hero-title">Hộ Kinh Doanh <span class="accent" style="white-space:nowrap;">Hà Nam</span></h1>
         <p class="hero-trade">Tên giao dịch: HÀ NAM Agency · Dịch vụ quảng cáo trực tuyến &amp; Digital Marketing</p>
@@ -488,7 +484,7 @@
         </div>
       </div>
 
-      <aside class="id-card fade-in" aria-label="Tóm tắt thông tin đăng ký hộ kinh doanh">
+      <aside class="id-card" aria-label="Tóm tắt thông tin đăng ký hộ kinh doanh">
         <div class="id-card-head">
           <div class="kicker">Giấy chứng nhận đăng ký hộ kinh doanh</div>
           <div class="name">HỘ KINH DOANH HÀ NAM</div>
@@ -510,14 +506,14 @@
 
 <section id="phap-ly" class="section alt">
   <div class="container">
-    <div class="section-head fade-in">
+    <div class="section-head">
       <span class="section-label">Thông Tin Pháp Lý</span>
       <h2 class="section-title">Thông Tin Đăng Ký Hộ Kinh Doanh</h2>
       <p class="section-sub">Thông tin dưới đây được ghi đúng theo Giấy chứng nhận đăng ký hộ kinh doanh do Phòng Tài chính – Kế hoạch, UBND huyện Long Thành cấp.</p>
     </div>
 
     <div class="legal-wrap">
-      <table class="legal-table fade-in">
+      <table class="legal-table">
         <tbody>
           <tr>
             <th scope="row">Tên hộ kinh doanh<span class="en">Legal business name</span></th>
@@ -575,15 +571,15 @@
       </table>
 
       <div class="legal-side">
-        <div class="note-card info fade-in">
+        <div class="note-card info">
           <h3>ℹ️ Về mã số thuế</h3>
           <p>Từ ngày 01/07/2025, hộ kinh doanh sử dụng số định danh cá nhân làm mã số thuế. Vì vậy mã số thuế hiện hành của HỘ KINH DOANH HÀ NAM là 045088006768. Mã số hộ kinh doanh 8130617574-001 và mã số đăng ký 47H8026933 ghi trên Giấy chứng nhận đăng ký hộ kinh doanh vẫn được giữ nguyên để đối chiếu.</p>
         </div>
-        <div class="note-card info fade-in">
+        <div class="note-card info">
           <h3>ℹ️ Về địa chỉ hành chính</h3>
           <p>Địa chỉ trụ sở được ghi nguyên văn theo Giấy chứng nhận đăng ký hộ kinh doanh cấp ngày 15/01/2025. Từ năm 2025, Việt Nam sắp xếp lại đơn vị hành chính cấp tỉnh, cấp xã và không còn cấp huyện, nên tên xã, huyện trong địa chỉ có thể được gọi theo tên mới. Địa điểm kinh doanh thực tế tại số 84/11/3 Lê Duẩn, Long Thành, Đồng Nai không thay đổi.</p>
         </div>
-        <div class="note-card warn fade-in">
+        <div class="note-card warn">
           <h3>🔒 Cam kết thông tin</h3>
           <ul>
             <li><span>✔️</span><span>Tên, địa chỉ, số điện thoại trên website trùng khớp với giấy chứng nhận đăng ký.</span></li>
@@ -599,7 +595,7 @@
 <section id="gioi-thieu" class="section">
   <div class="container">
     <div class="about-grid">
-      <div class="about-panel fade-in">
+      <div class="about-panel">
         <div class="big">HỘ KINH DOANH HÀ NAM</div>
         <p>Hoạt động dưới tên giao dịch HÀ NAM Agency, chúng tôi cung cấp dịch vụ quảng cáo trực tuyến, tối ưu dữ liệu chuyển đổi và tự động hóa bán hàng cho doanh nghiệp nhỏ, cửa hàng và hộ kinh doanh tại Long Thành, Đồng Nai và trên toàn quốc.</p>
         <div class="chips">
@@ -611,7 +607,7 @@
           <span class="chip">WhatsApp API</span>
         </div>
       </div>
-      <div class="fade-in">
+      <div>
         <div class="section-head" style="margin-bottom:28px;">
           <span class="section-label">Giới Thiệu</span>
           <h2 class="section-title">Đối Tác Marketing Cho Doanh Nghiệp Nhỏ</h2>
@@ -647,47 +643,47 @@
 
 <section id="dich-vu" class="section alt">
   <div class="container">
-    <div class="section-head center fade-in">
+    <div class="section-head center">
       <span class="section-label">Dịch Vụ</span>
       <h2 class="section-title">Dịch Vụ Chúng Tôi Cung Cấp</h2>
       <p class="section-sub">Từ quảng cáo hiệu suất đến kết nối dữ liệu, mọi thứ doanh nghiệp nhỏ cần để bán hàng trực tuyến hiệu quả.</p>
     </div>
     <div class="services-grid">
-      <div class="svc fade-in"><div class="svc-icon">📘</div><div class="svc-name">Quảng cáo Facebook</div><div class="svc-desc">Lên chiến dịch, nhắm đúng khách hàng mục tiêu và kiểm soát ngân sách hiệu quả.</div></div>
-      <div class="svc fade-in"><div class="svc-icon">🔎</div><div class="svc-name">Quảng cáo Google</div><div class="svc-desc">Search, Display, YouTube, Shopping phủ toàn bộ hành trình tìm kiếm của khách hàng.</div></div>
-      <div class="svc fade-in"><div class="svc-icon">🎵</div><div class="svc-name">Quảng cáo TikTok</div><div class="svc-desc">Tiếp cận khách hàng trẻ bằng nội dung video ngắn và quảng cáo dạng native.</div></div>
-      <div class="svc fade-in"><div class="svc-icon">🛍️</div><div class="svc-name">Quảng cáo Shopee</div><div class="svc-desc">Tối ưu quảng cáo nội sàn, tăng lượt xem sản phẩm và đơn hàng trên Shopee.</div></div>
-      <div class="svc fade-in"><div class="svc-icon">⚡</div><div class="svc-name">Conversion API</div><div class="svc-desc">Gửi dữ liệu chuyển đổi phía máy chủ, hạn chế mất dữ liệu do iOS và trình chặn cookie.</div></div>
-      <div class="svc fade-in"><div class="svc-icon">💬</div><div class="svc-name">WhatsApp Business API</div><div class="svc-desc">Tự động hóa chăm sóc khách hàng, gửi thông báo và trả lời tin nhắn nhanh chóng.</div></div>
-      <div class="svc fade-in"><div class="svc-icon">🤖</div><div class="svc-name">Tự động hóa AI</div><div class="svc-desc">Ứng dụng AI để soạn nội dung, phân tích số liệu và tối ưu chiến dịch.</div></div>
-      <div class="svc fade-in"><div class="svc-icon">🗂️</div><div class="svc-name">Kết nối CRM</div><div class="svc-desc">Đồng bộ dữ liệu khách hàng giữa CRM, website và các nền tảng quảng cáo.</div></div>
+      <div class="svc"><div class="svc-icon">📘</div><div class="svc-name">Quảng cáo Facebook</div><div class="svc-desc">Lên chiến dịch, nhắm đúng khách hàng mục tiêu và kiểm soát ngân sách hiệu quả.</div></div>
+      <div class="svc"><div class="svc-icon">🔎</div><div class="svc-name">Quảng cáo Google</div><div class="svc-desc">Search, Display, YouTube, Shopping phủ toàn bộ hành trình tìm kiếm của khách hàng.</div></div>
+      <div class="svc"><div class="svc-icon">🎵</div><div class="svc-name">Quảng cáo TikTok</div><div class="svc-desc">Tiếp cận khách hàng trẻ bằng nội dung video ngắn và quảng cáo dạng native.</div></div>
+      <div class="svc"><div class="svc-icon">🛍️</div><div class="svc-name">Quảng cáo Shopee</div><div class="svc-desc">Tối ưu quảng cáo nội sàn, tăng lượt xem sản phẩm và đơn hàng trên Shopee.</div></div>
+      <div class="svc"><div class="svc-icon">⚡</div><div class="svc-name">Conversion API</div><div class="svc-desc">Gửi dữ liệu chuyển đổi phía máy chủ, hạn chế mất dữ liệu do iOS và trình chặn cookie.</div></div>
+      <div class="svc"><div class="svc-icon">💬</div><div class="svc-name">WhatsApp Business API</div><div class="svc-desc">Tự động hóa chăm sóc khách hàng, gửi thông báo và trả lời tin nhắn nhanh chóng.</div></div>
+      <div class="svc"><div class="svc-icon">🤖</div><div class="svc-name">Tự động hóa AI</div><div class="svc-desc">Ứng dụng AI để soạn nội dung, phân tích số liệu và tối ưu chiến dịch.</div></div>
+      <div class="svc"><div class="svc-icon">🗂️</div><div class="svc-name">Kết nối CRM</div><div class="svc-desc">Đồng bộ dữ liệu khách hàng giữa CRM, website và các nền tảng quảng cáo.</div></div>
     </div>
   </div>
 </section>
 
 <section id="quy-trinh" class="section">
   <div class="container">
-    <div class="section-head center fade-in">
+    <div class="section-head center">
       <span class="section-label">Quy Trình</span>
       <h2 class="section-title">Quy Trình Làm Việc</h2>
       <p class="section-sub">Rõ ràng từng bước, báo giá trước khi triển khai.</p>
     </div>
     <div class="steps">
-      <div class="step fade-in"><div class="step-title">Tiếp nhận nhu cầu</div><div class="step-desc">Trao đổi qua điện thoại hoặc Zalo để hiểu sản phẩm, khách hàng và mục tiêu.</div></div>
-      <div class="step fade-in"><div class="step-title">Đề xuất &amp; báo giá</div><div class="step-desc">Gửi kế hoạch, ngân sách đề xuất và chi phí dịch vụ rõ ràng.</div></div>
-      <div class="step fade-in"><div class="step-title">Triển khai</div><div class="step-desc">Thiết lập tài khoản, đo lường, nội dung quảng cáo và vận hành chiến dịch.</div></div>
-      <div class="step fade-in"><div class="step-title">Báo cáo &amp; tối ưu</div><div class="step-desc">Báo cáo định kỳ, minh bạch chi phí và liên tục tối ưu hiệu quả.</div></div>
+      <div class="step"><div class="step-title">Tiếp nhận nhu cầu</div><div class="step-desc">Trao đổi qua điện thoại hoặc Zalo để hiểu sản phẩm, khách hàng và mục tiêu.</div></div>
+      <div class="step"><div class="step-title">Đề xuất &amp; báo giá</div><div class="step-desc">Gửi kế hoạch, ngân sách đề xuất và chi phí dịch vụ rõ ràng.</div></div>
+      <div class="step"><div class="step-title">Triển khai</div><div class="step-desc">Thiết lập tài khoản, đo lường, nội dung quảng cáo và vận hành chiến dịch.</div></div>
+      <div class="step"><div class="step-title">Báo cáo &amp; tối ưu</div><div class="step-desc">Báo cáo định kỳ, minh bạch chi phí và liên tục tối ưu hiệu quả.</div></div>
     </div>
   </div>
 </section>
 
 <section id="nganh-nghe" class="section alt">
   <div class="container">
-    <div class="section-head center fade-in">
+    <div class="section-head center">
       <span class="section-label">Khách Hàng</span>
       <h2 class="section-title">Lĩnh Vực Chúng Tôi Phục Vụ</h2>
     </div>
-    <div class="industries fade-in">
+    <div class="industries">
       <div class="industry"><span>🏪</span><span>Cửa hàng &amp; hộ kinh doanh</span></div>
       <div class="industry"><span>🦷</span><span>Nha khoa</span></div>
       <div class="industry"><span>🩺</span><span>Thiết bị y tế</span></div>
@@ -705,7 +701,7 @@
 <section id="lien-he" class="section">
   <div class="container">
     <div class="contact-grid">
-      <div class="fade-in">
+      <div>
         <div class="section-head" style="margin-bottom:28px;">
           <span class="section-label">Liên Hệ</span>
           <h2 class="section-title">Liên Hệ HỘ KINH DOANH HÀ NAM</h2>
@@ -752,7 +748,7 @@
         </div>
       </div>
 
-      <div class="fade-in">
+      <div>
         <form class="form-card" id="contactForm" novalidate>
           <div class="form-title">📋 Gửi yêu cầu tư vấn</div>
           <div class="form-sub">Điền thông tin, hệ thống sẽ mở ứng dụng email để bạn gửi cho chúng tôi.</div>
@@ -797,7 +793,7 @@
   <div id="terms"></div>
   <div id="data-usage"></div>
   <div class="container">
-    <div class="policy-box fade-in">
+    <div class="policy-box">
       <span class="section-label">Pháp Lý &amp; Chính Sách</span>
       <h2 class="section-title">Chính Sách &amp; Điều Khoản</h2>
       <p style="font-size:14.5px;color:var(--gray-600);">Áp dụng cho website và dịch vụ của HỘ KINH DOANH HÀ NAM (tên giao dịch HÀ NAM Agency), địa chỉ 84/11/3 Lê Duẩn, khu Bàu Cá, Xã An Phước, Huyện Long Thành, Tỉnh Đồng Nai, Việt Nam.</p>
@@ -980,18 +976,6 @@
     mobileMenu.classList.remove('open');
     hamburgerBtn.setAttribute('aria-expanded', 'false');
   }));
-
-  // Fade-in on scroll
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  } else {
-    document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-  }
 
   // Policy tabs, linkable via #privacy, #terms, #data-usage, #privacy-contact
   const HASH_TO_TAB = {
